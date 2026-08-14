@@ -1,0 +1,10 @@
+{ inputs, ... }:
+
+{
+  flake.darwinModules.darwinModule = { pkgs, ... }: {
+
+    environment.systemPackages = with pkgs; [ tree ];
+    nix.settings.experimental-features = "nix-command flakes";
+    security.pam.services.sudo_local.touchIdAuth = true;
+  };
+}
