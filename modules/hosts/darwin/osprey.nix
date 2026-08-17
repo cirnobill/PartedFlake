@@ -1,13 +1,19 @@
-{ inputs, self, ... }: {
+{ inputs, self, ... }:
 
+{
   flake.darwinConfigurations.Osprey = inputs.nix-darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
+    specialArgs = { inherit inputs; };
     modules = [
       self.darwinModules.ospreyModule
-      self.darwinModules.darwinModule
     ];
-  }
+  };
 
   flake.darwinModules.ospreyModule = { pkgs, ... }: {
+  
+    environment.systemPackages = with pkgs; [ tree ];
+    nix.settings.experimental-features = "nix-command flakes";
+    security.pam.services.sudo_local.touchIdAuth = true;
     fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
 
     networking = {
@@ -17,7 +23,7 @@
 
     system = {
       primaryUser = "cirnobill";
-      confirugationRevision = inputs.self.rev or inputs.self.dirtRev or null;
+      configurationRevision = inputs.self.rev or inputs.self.dirtRev or null;
       stateVersion = 6;
     };
 

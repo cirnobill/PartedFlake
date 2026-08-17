@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.darwinModules.darwinModule = { pkgs, ... }: {
+  flake.modules.darwin.macModule = { pkgs, ... }: {
 
     environment.systemPackages = with pkgs; [ tree ];
     nix.settings.experimental-features = "nix-command flakes";
