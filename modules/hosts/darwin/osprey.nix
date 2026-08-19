@@ -5,11 +5,12 @@
     system = "aarch64-darwin";
     specialArgs = { inherit inputs; };
     modules = [
-      self.darwinModules.ospreyModule
+      self.modules.darwin.ospreyModule
+      self.modules.darwin.systemPackages
     ];
   };
 
-  flake.darwinModules.ospreyModule = { pkgs, ... }: {
+  flake.modules.darwin.ospreyModule = { pkgs, ... }: {
   
     environment.systemPackages = with pkgs; [ tree ];
     nix.settings.experimental-features = "nix-command flakes";

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  flake.darwinPackages.systemPackages = { pkgs, ... }: {
+  flake.modules.darwin.systemPackages = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       kitty
     ];
