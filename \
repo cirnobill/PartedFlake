@@ -1,0 +1,19 @@
+{ inputs, nixpkgs, ... }:
+
+{
+  flake.homeConfigurations.cirnobill = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = import nixpkgs { system = "x86_64-linux"; };
+    modules = with inputs.self.homeModules; [
+      environmentVariables.sessionVariables
+      terminalEmulators.kitty
+      textEditors.nixvim
+      {
+	home = {
+	  username = "cirnobill";
+	  homeDirectory = "/home/cirnobill";
+	  stateVersion = "26.11";
+	};
+      }
+    ];
+  };
+}

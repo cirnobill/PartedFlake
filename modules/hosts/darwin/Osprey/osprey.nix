@@ -4,18 +4,14 @@
   flake.darwinConfigurations.Osprey = inputs.nix-darwin.lib.darwinSystem {
     system = "aarch64-darwin";
     specialArgs = { inherit inputs; };
-    modules = [
-      self.modules.darwin.ospreyModule
-      self.modules.darwin.systemPackages
+    modules = with self.modules.darwin; [
+      ospreyModule
+      macosModule
+      systemPackages
     ];
   };
 
-  flake.modules.darwin.ospreyModule = { pkgs, ... }: {
-  
-    environment.systemPackages = with pkgs; [ tree ];
-    nix.settings.experimental-features = "nix-command flakes";
-    security.pam.services.sudo_local.touchIdAuth = true;
-    fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
+  flake.modules.darwin.ospreyModule = { ... }: {
 
     networking = {
       computerName = "Osprey";

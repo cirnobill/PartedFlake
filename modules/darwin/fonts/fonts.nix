@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   flake.modules.darwin.fonts = { pkgs, ... }: {
