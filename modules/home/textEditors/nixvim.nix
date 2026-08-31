@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.home.textEditors.nixvim = { inputs, pkgs, ... }: {
+  flake.homeModules.textEditors.nixvim = { inputs, pkgs, ... }: {
     imports = [ inputs.nixvim.homeModules.default ];
 
     programs.nixvim = {

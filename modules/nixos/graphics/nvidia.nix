@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.graphics.nvidia = { config, pkgs, ... }: {
+  flake.nixosModules.nvidia = { config, pkgs, ... }: {
 
     boot.kernelParams = [
       "initcall_blacklist=simpledrm_platform_driver_init" # Disables simpledrm from initiatlising so that NVIDIA DRM can load first

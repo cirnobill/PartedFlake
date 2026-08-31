@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.home.terminalEmulators.kitty = { ... }: {
+  flake.homeModules.terminalEmulators.kitty = { ... }: {
     
     programs.kitty = {
 			

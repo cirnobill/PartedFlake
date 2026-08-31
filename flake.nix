@@ -20,7 +20,9 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       imports = [
+	./modules/nixos/cachix/cachix.nix
         inputs.flake-parts.flakeModules.modules
+	inputs.home-manager.flakeModules.home-manager
         (inputs.import-tree ./modules)
       ];
     };

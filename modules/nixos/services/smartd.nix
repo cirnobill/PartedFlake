@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.services.smartd = { ... }: {
+  flake.nixosModules.smartd = { ... }: {
 
     services.smartd = {
       enable = true;

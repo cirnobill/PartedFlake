@@ -1,13 +1,9 @@
 { ... }:
 
 {
-  nix.settings = {
+  flake.nixConfig = {
 
     substituters = [
-      "https://yazi.cachix.org"
-    ];
-
-    trusted-substituters = [
       "https://yazi.cachix.org"
     ];
 
